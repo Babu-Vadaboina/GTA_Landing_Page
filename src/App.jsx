@@ -28,6 +28,16 @@ function App() {
       },
     });
   });
+  useGSAP(() => {
+    const main = document.querySelector(".main");
+    main?.addEventListener("mousemove", (e) => {
+      const xMove = (e.clientX / window.innerWidth - 0.5) * 40;
+      const yMove = (e.clientY / window.innerHeight - 0.5) * 40;
+      gsap.to(".main .text", { x: `${xMove * 0.4}%` });
+      gsap.to(".sky", { x: xMove });
+      gsap.to(".bg", { x: xMove * 1.7 });
+    });
+  }, [showContent]);
   return (
     <>
       <div className="svg flex items-center justify-center fixed top-0 left-0 z-[100] w-full h-full h-screen overflow-hidden bg-[#000]">
@@ -78,12 +88,12 @@ function App() {
 
             <div className="imagesdiv relative w-full h-screen overflow-hidden">
               <img
-                className=" absolute top-0 left-0 w-full h-full object-cover"
+                className="sky absolute scale-[1.3] top-0 left-0 w-full h-full object-cover"
                 src="./sky.png"
                 alt=""
               />
               <img
-                className="absolute top-0 left-0 w-full h-full object-cover"
+                className="bg absolute scale-[1.1] top-0 left-0 w-full h-full object-cover"
                 src="./bg.png"
                 alt=""
               />
@@ -93,14 +103,14 @@ function App() {
                 <h1 className="text-[8rem] leading-none -ml-40">auto</h1>
               </div>
               <img
-                className="absolute -bottom-[55%] left-1/2 -translate-x-1/2 scale-[0.8]"
+                className="character absolute -bottom-[55%] left-1/2 -translate-x-1/2 scale-[0.8]"
                 src="./girlbg.png"
                 alt=""
               />
             </div>
             <div className="btmbr absolute bottom-0 left-0 w-full py-15 px-10 bg-gradient-to-t from-black to-transparent text-white">
               <div className="flex gap-4 items-center">
-                <i class="ri-arrow-down-line text-4xl"></i>
+                <i className="ri-arrow-down-line text-4xl"></i>
                 <h3 className="font-[Helvitica_Now_Display] text-xl">
                   Scroll down
                 </h3>
@@ -110,6 +120,40 @@ function App() {
                 src="./ps5.png"
                 alt=""
               />
+            </div>
+          </div>
+          <div className="w-full h-screen flex items-center justify-center bg-black">
+            <div className="cntnr w-full h-[80%] flex text-white">
+              <div className="limg relative w-1/2 h-full">
+                <img
+                  className="absolute  scale-[1] top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2"
+                  src="./imag.png "
+                  alt=""
+                />
+              </div>
+              <div className="rg w-[30%] py-5">
+                <h1 className="text-6xl">Still Running</h1>
+                <h1 className="text-6xl">not hunting</h1>
+                <p className="mt-10 text-xl font-[Helvotoca_Now_Display]">
+                  Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed
+                  do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+                  Ut enim ad minim veniam, quis nostrud exercitation ullamco
+                  laboris consequat.
+                </p>
+                <p className="mt-3 text-xl font-[Helvotoca_Now_Display]">
+                  Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed
+                  do eiusmod tempor incididunt
+                </p>
+                <p className="mt-10 text-xl font-[Helvotoca_Now_Display]">
+                  Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed
+                  do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+                  Ut enim ad minim veniam, quis nostrud exercitation ullamco
+                  laboris consequat.
+                </p>
+                <button className="px-10 py-10 bg-yellow-500 text-4xl text-black mt-10">
+                  Download Now
+                </button>
+              </div>
             </div>
           </div>
         </div>
