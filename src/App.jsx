@@ -1,6 +1,8 @@
 import React, { useState } from "react";
 import gsap from "gsap";
 import { useGSAP } from "@gsap/react";
+import "remixicon/fonts/remixicon.css";
+
 function App() {
   let [showContent, setShowContent] = useState(false);
   useGSAP(() => {
@@ -62,13 +64,15 @@ function App() {
         <div className="main w-full">
           <div className="landing w-full h-screen bg-black">
             <div className="navbar absolute top-0 left-0 z-[10] w-full py-10 px-10 ">
-              <div className="logo">
-                <div className="lines flex flex-col gap-1">
-                  <div className="lines w-10 h-1 bg-white"></div>
-                  <div className="lines w-10 h-1 bg-white"></div>
-                  <div className="lines w-10 h-1 bg-white"></div>
+              <div className="logo flex gap-5">
+                <div className="lines flex flex-col gap-[5px]">
+                  <div className="lines w-13 h-2 bg-white"></div>
+                  <div className="lines w-8 h-2 bg-white"></div>
+                  <div className="lines w-5 h-2 bg-white"></div>
                 </div>
-                <h3 className="twxt-3xl text-white">Rockstar</h3>
+                <h3 className="text-3xl text-white -mt-[8px] leading-none">
+                  Rockstar
+                </h3>
               </div>
             </div>
             <div className="imagesdiv relative w-full h-screen overflow-hidden">
@@ -85,6 +89,19 @@ function App() {
               <img
                 className="absolute -bottom-[55%] left-1/2 -translate-x-1/2 scale-[0.8]"
                 src="./girlbg.png"
+                alt=""
+              />
+            </div>
+            <div className="btmbr absolute bottom-0 left-0 w-full py-15 px-10 bg-gradient-to-t from-black to-transparent text-white">
+              <div className="flex gap-4 items-center">
+                <i class="ri-arrow-down-line text-4xl"></i>
+                <h3 className="font-[Helvitica_Now_Display] text-xl">
+                  Scroll down
+                </h3>
+              </div>
+              <img
+                className=" absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 h-[55px]"
+                src="./ps5.png"
                 alt=""
               />
             </div>
