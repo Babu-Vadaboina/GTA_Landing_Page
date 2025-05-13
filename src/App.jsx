@@ -1,35 +1,55 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
-
+import React from "react";
+import gsap from "gsap";
+import { useGSAP } from "@gsap/react";
 function App() {
-  const [count, setCount] = useState(0)
-
+  useGSAP(() => {
+    const tl = gsap.timeline();
+    tl.to(".vi-mask-group", {
+      rotate: 10,
+      duration: 2,
+      ease: "Power4.easeInOut",
+      transformOrigin: "50% 50%",
+    }).to(".vi-mask-group", {
+      scale: 10,
+      delay: -1.8,
+      duration: 2,
+      ease: "Expo.easeInOut",
+      transformOrigin: "50% 50%",
+      opacity: 0,
+    });
+  });
   return (
-    <>
-      <div>
-        <a href="https://vite.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.jsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </>
-  )
+    <div className="svg flex items-center justify-center fixed top-0 left-0 z-[100] w-full h-full h-screen overflow-hidden bg-[#000]">
+      <svg viewBox="0 0 800 600" preserveAspectRatio="xMidyMid slice">
+        <defs>
+          <mask id="viMask">
+            <rect width="100%" height="100%" fill="black" />
+            <g className="vi-mask-group">
+              <text
+                x="50%"
+                y="50%"
+                fontSize="250"
+                textAnchor="middle"
+                fill="white"
+                dominantBaseline="middle"
+                fontFamily="Arial Black"
+              >
+                VI
+              </text>
+            </g>
+          </mask>
+        </defs>
+        <image
+          href="./bg.png"
+          width="100%"
+          height="100%"
+          preserveAspectRatio="xMidyMid slice"
+          mask="url(#viMask)"
+        />
+        "
+      </svg>
+    </div>
+  );
 }
 
-export default App
+export default App;
